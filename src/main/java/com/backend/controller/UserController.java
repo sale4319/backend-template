@@ -60,4 +60,9 @@ public class UserController {
         return "User with id: " + id + " has been deleted successfully";
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "Hello";
+    }
+
 }
