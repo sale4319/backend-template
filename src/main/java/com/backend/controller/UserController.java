@@ -59,10 +59,4 @@ public class UserController {
         userRepository.deleteById(id);
         return "User with id: " + id + " has been deleted successfully";
     }
-
-    @GetMapping("/test")
-    public String test() {
-        return "Hello";
-    }
-
 }
