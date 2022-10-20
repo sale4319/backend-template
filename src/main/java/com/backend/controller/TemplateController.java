@@ -13,50 +13,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.exception.UserNotFoundException;
-import com.backend.model.User;
-import com.backend.repository.UserRepository;
+import com.backend.model.TemplateModel;
+import com.backend.repository.TemplateRepository;
 
 @RestController
 @CrossOrigin("http://localhost:3000/")
-public class UserController {
+public class TemplateController {
 
     @Autowired
-    private UserRepository userRepository;
+    private TemplateRepository templateRepository;
 
     @PostMapping("/user")
-    User newUser(@RequestBody User newUser) {
-        return userRepository.save(newUser);
+    TemplateModel newUser(@RequestBody TemplateModel newUser) {
+        return templateRepository.save(newUser);
     }
 
     @GetMapping("/users")
-    List<User> getAllUsers() {
-        return userRepository.findAll();
+    List<TemplateModel> getAllUsers() {
+        return templateRepository.findAll();
     }
 
     @GetMapping("/user/{id}")
-    User getUserById(@PathVariable Long id) {
-        return userRepository.findById(id)
+    TemplateModel getUserById(@PathVariable Long id) {
+        return templateRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
 
     }
 
     @PutMapping("/user/{id}")
-    User updateUser(@RequestBody User newUser, @PathVariable Long id) {
-        return userRepository.findById(id)
+    TemplateModel updateUser(@RequestBody TemplateModel newUser, @PathVariable Long id) {
+        return templateRepository.findById(id)
                 .map(user -> {
                     user.setUsername(newUser.getUsername());
                     user.setName(newUser.getName());
                     user.setEmail(newUser.getEmail());
-                    return userRepository.save(user);
+                    return templateRepository.save(user);
                 }).orElseThrow(() -> new UserNotFoundException(id));
     }
 
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id) {
-        if (!userRepository.existsById(id)) {
+        if (!templateRepository.existsById(id)) {
             throw new UserNotFoundException(id);
         }
-        userRepository.deleteById(id);
+        templateRepository.deleteById(id);
         return "User with id: " + id + " has been deleted successfully";
     }
 
