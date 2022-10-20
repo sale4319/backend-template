@@ -17,7 +17,7 @@ import com.backend.model.TemplateModel;
 import com.backend.repository.TemplateRepository;
 
 @RestController
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("https://mytestsbox.com/")
 public class TemplateController {
 
     @Autowired
