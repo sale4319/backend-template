@@ -4,18 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "user")
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 public class TemplateModel {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String id;
     private String username;
     private String name;
     private String email;

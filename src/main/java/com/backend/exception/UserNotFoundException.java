@@ -1,7 +1,7 @@
 package com.backend.exception;
 
 public class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException(Long id) {
+    public UserNotFoundException(String id) {
         super("Could not find user with id " + id);
     }
 }

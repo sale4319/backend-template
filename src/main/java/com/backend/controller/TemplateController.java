@@ -34,14 +34,14 @@ public class TemplateController {
     }
 
     @GetMapping("/user/{id}")
-    TemplateModel getUserById(@PathVariable Long id) {
+    TemplateModel getUserById(@PathVariable String id) {
         return templateRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
 
     }
 
     @PutMapping("/user/{id}")
-    TemplateModel updateUser(@RequestBody TemplateModel newUser, @PathVariable Long id) {
+    TemplateModel updateUser(@RequestBody TemplateModel newUser, @PathVariable String id) {
         return templateRepository.findById(id)
                 .map(user -> {
                     user.setUsername(newUser.getUsername());
@@ -52,7 +52,7 @@ public class TemplateController {
     }
 
     @DeleteMapping("/user/{id}")
-    String deleteUser(@PathVariable Long id) {
+    String deleteUser(@PathVariable String id) {
         if (!templateRepository.existsById(id)) {
             throw new UserNotFoundException(id);
         }
